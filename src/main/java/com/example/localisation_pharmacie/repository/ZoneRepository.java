@@ -1,2 +1,4 @@
-package com.example.localisation_pharmacie.repository;public interface ZoneRepository {
+package com.example.localisation_pharmacie.repository;
+
+public interface ZoneRepository {
 }

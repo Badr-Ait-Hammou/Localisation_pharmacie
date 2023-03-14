@@ -1,2 +1,4 @@
-package com.example.localisation_pharmacie.controller;public class GardeController {
+package com.example.localisation_pharmacie.controller;
+
+public class GardeController {
 }

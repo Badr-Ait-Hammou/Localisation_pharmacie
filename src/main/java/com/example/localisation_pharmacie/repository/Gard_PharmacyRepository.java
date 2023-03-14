@@ -1,4 +1,4 @@
 package com.example.localisation_pharmacie.repository;
 
-public interface FiliereRepository {
+public interface Gard_PharmacyRepository {
 }
