@@ -3,6 +3,9 @@ package com.example.localisation_pharmacie.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.minidev.json.annotate.JsonIgnore;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,8 +23,16 @@ public class Pharmacie {
     private Byte image;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Zone zone;
+
+    @OneToMany(mappedBy = "pharmacie")
+    List<Garde_Pharmacie> garde_pharmacieList;
+
+    @OneToOne
+    @JoinColumn(name = "user")
+  //  @JsonIgnore
+    private User user;
 
 
 }

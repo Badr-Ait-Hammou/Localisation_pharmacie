@@ -3,21 +3,18 @@ package com.example.localisation_pharmacie.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class Ville {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
 
-    @OneToMany(mappedBy = "ville", fetch = FetchType.EAGER)
-    //@JsonIgnore
-    private List<Zone> zoneList;
-
+    @ManyToMany(mappedBy = "roleList",fetch = FetchType.EAGER)
+    List<User> userList;
 }

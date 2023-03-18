@@ -18,6 +18,6 @@ public class Zone {
     @OneToMany(mappedBy = "zone", fetch = FetchType.EAGER)
     private List<Pharmacie> pharmacieList;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Ville ville;
 }
