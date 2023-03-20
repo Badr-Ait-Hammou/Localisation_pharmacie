@@ -27,11 +27,11 @@ public class Pharmacie {
     private Zone zone;
 
     @OneToMany(mappedBy = "pharmacie")
-    List<Garde_Pharmacie> garde_pharmacieList;
+     private List<Garde_Pharmacie> garde_pharmacieList;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "user")
-  //  @JsonIgnore
+    @JsonIgnore
     private User user;
 
 

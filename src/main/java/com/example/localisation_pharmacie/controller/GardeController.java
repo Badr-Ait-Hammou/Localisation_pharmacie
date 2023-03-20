@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/garde")
+@RequestMapping("api/gardes")
 public class GardeController {
     @Autowired
     private GardeRepository gardeRepository;

@@ -1,9 +1,10 @@
 package com.example.localisation_pharmacie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
+
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class Ville {
     private int id;
     private String nom;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "ville", fetch = FetchType.EAGER)
-    //@JsonIgnore
     private List<Zone> zoneList;
 
 }

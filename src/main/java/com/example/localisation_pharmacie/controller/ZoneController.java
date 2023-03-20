@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/zone")
+@RequestMapping("api/zones")
 public class ZoneController {
 
     @Autowired
@@ -34,16 +34,17 @@ public class ZoneController {
 
     @PostMapping("/save")
     public int save(@RequestBody Zone zone) {
-        Ville ville=villeController.findByID(zone.getId());
+        Ville ville = villeController.findById(zone.getVille().getId());
         zone.setVille(ville);
-        if(ville==null){
+        if (ville == null) {
             return -1;
-        }else{
+        } else {
+
             zoneRepository.save(zone);
             return 1;
         }
-
     }
+
 
     @GetMapping("/id/{id}")
     public  Zone findById(@PathVariable int id) {
