@@ -20,8 +20,7 @@ public class Zone {
     @OneToMany(mappedBy = "zone", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Pharmacie> pharmacieList;
-
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Ville ville;
 }

@@ -34,15 +34,15 @@ public class ZoneController {
 
     @PostMapping("/save")
     public int save(@RequestBody Zone zone) {
-        Ville ville = villeController.findById(zone.getVille().getId());
+     /*  Ville ville = villeController.findById(zone.getVille().getId());
         zone.setVille(ville);
         if (ville == null) {
             return -1;
         } else {
-
+*/
             zoneRepository.save(zone);
-            return 1;
-        }
+            return  1;
+
     }
 
 
