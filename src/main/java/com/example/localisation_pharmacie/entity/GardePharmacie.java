@@ -2,19 +2,23 @@ package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-public class Garde_Pharmacie {
+public class GardePharmacie {
     @EmbeddedId
     private Garde_PharmacyPk garde_pharmacyEMb;
 
     @ManyToOne
     @JoinColumn(name = "pharmacie",insertable = false,updatable = false)
+    @JsonIgnore
     private Pharmacie pharmacie;
 
     @ManyToOne

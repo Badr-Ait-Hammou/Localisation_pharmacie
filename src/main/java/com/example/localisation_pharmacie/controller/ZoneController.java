@@ -1,10 +1,10 @@
 package com.example.localisation_pharmacie.controller;
 
-import com.example.localisation_pharmacie.entity.Ville;
 import com.example.localisation_pharmacie.entity.Zone;
-import com.example.localisation_pharmacie.repository.ZoneRepository;
+import com.example.localisation_pharmacie.service.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -13,46 +13,39 @@ import java.util.List;
 public class ZoneController {
 
     @Autowired
-    private ZoneRepository zoneRepository;
-    @Autowired
-    private VilleController villeController;
-
-
-
-   /* @GetMapping("/byzoneid/{id}")
-    public Ville findVilleByzone(int id) {
-        return zoneRepository.findVilleByzone(id);
-    }
-*/
-
-
-
-    @GetMapping("/")
-    public List<Zone> findAll() {
-        return zoneRepository.findAll();
-    }
-
-    @PostMapping("/save")
-    public int save(@RequestBody Zone zone) {
-     /*  Ville ville = villeController.findById(zone.getVille().getId());
-        zone.setVille(ville);
-        if (ville == null) {
-            return -1;
-        } else {
-*/
-            zoneRepository.save(zone);
-            return  1;
-
-    }
-
-
-    @GetMapping("/id/{id}")
-    public  Zone findById(@PathVariable int id) {
-        return zoneRepository.findById(id);
+    private ZoneService zoneService;
+    @PutMapping("/id/{id}")
+    public void update(@PathVariable Integer id,@RequestBody Zone zoneinfo) {
+        zoneService.update(id, zoneinfo);
     }
 
     @DeleteMapping("/id/{id}")
-    public void deleteById(@PathVariable int id ) {
-        zoneRepository.deleteById(id);
+    public void delete(@PathVariable int id) {
+        Zone zone=zoneService.findById(id);
+        zoneService.delete(zone);
     }
+
+    @GetMapping("/ville/{nom}")
+    public List<Zone> findAllZonesVille(@PathVariable String nom) {
+        return zoneService.findAllZones(nom);
+    }
+
+
+
+    @PostMapping("/save")
+    public Zone save(@RequestBody Zone o) {
+        return zoneService.save(o);
+    }
+
+
+
+    @GetMapping("/id/{id}")
+    public Zone findById(@PathVariable int id) {
+        return zoneService.findById(id);
+    }
+
+
+
+
+
 }

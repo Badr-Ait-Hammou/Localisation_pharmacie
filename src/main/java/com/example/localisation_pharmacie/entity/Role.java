@@ -2,12 +2,15 @@ package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Role {
     @Id
@@ -16,5 +19,6 @@ public class Role {
     private String nom;
 
     @ManyToMany(mappedBy = "roleList",fetch = FetchType.EAGER)
-    List<User> userList;
+    @JsonIgnore
+    private List<User> userList;
 }

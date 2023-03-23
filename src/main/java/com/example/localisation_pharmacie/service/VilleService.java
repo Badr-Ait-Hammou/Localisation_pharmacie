@@ -4,6 +4,7 @@ import com.example.localisation_pharmacie.dao.IDao;
 import com.example.localisation_pharmacie.entity.Ville;
 import com.example.localisation_pharmacie.repository.VilleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,9 +31,12 @@ public class VilleService implements IDao<Ville> {
         return villeRepository.findById(id);
     }
 
-    @Override
-    public void update(Ville o) {
-        villeRepository.save(o);
+
+    public void update(Integer id,Ville villeinfo) {
+        Ville ville=villeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ville not found with id " + id));
+        ville.setNom(villeinfo.getNom());
+        ville.setZoneList(villeinfo.getZoneList());
+        villeRepository.save(ville);
     }
 
     @Override

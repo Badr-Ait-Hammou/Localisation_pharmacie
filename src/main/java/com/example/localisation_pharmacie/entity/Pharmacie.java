@@ -2,13 +2,16 @@ package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
+import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Pharmacie {
     @Id
@@ -20,14 +23,16 @@ public class Pharmacie {
     private int longitude;
     private int latitude;
     private String adresse;
-    private Byte image;
+    @Column(nullable = true, length = 64)
+    private String photos;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Zone zone;
 
     @OneToMany(mappedBy = "pharmacie")
-     private List<Garde_Pharmacie> garde_pharmacieList;
+    @JsonIgnore
+     private List<GardePharmacie> garde_pharmacieList;
 
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "user")

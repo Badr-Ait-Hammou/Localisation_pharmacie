@@ -2,13 +2,16 @@ package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
-
+import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 @Entity
-@Data @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class Garde {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +19,8 @@ public class Garde {
     private String type;
 
     @OneToMany(mappedBy = "garde")
-    List<Garde_Pharmacie> garde_pharmacieList;
+    @JsonIgnore
+    private List<GardePharmacie> garde_pharmacieList;
 
 
 }

@@ -1,13 +1,15 @@
 package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class User {
     @Id
@@ -22,7 +24,7 @@ public class User {
             name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    List<Role> roleList;
+    private List<Role> roleList;
 
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
