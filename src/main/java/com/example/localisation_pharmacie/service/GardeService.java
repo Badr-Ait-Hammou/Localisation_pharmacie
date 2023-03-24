@@ -4,6 +4,7 @@ import com.example.localisation_pharmacie.dao.IDao;
 import com.example.localisation_pharmacie.entity.Garde;
 import com.example.localisation_pharmacie.repository.GardeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +33,11 @@ public class GardeService implements IDao<Garde> {
     }
 
 
-    public void update(Garde o) {
-        gardeRepository.save(o);
+    public void update(Integer id,Garde gardeinfo) {
+        Garde garde=gardeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("garde not found with id " + id));
+        garde.setType(gardeinfo.getType());
+
+        gardeRepository.save(garde);
     }
 
     @Override

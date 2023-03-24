@@ -1,7 +1,6 @@
 package com.example.localisation_pharmacie.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +22,7 @@ public class GardePharmacie {
 
     @ManyToOne
     @JoinColumn(name = "garde",insertable = false,updatable = false)
+    @JsonIgnore
     private Garde garde;
 
     @Temporal(TemporalType.DATE)

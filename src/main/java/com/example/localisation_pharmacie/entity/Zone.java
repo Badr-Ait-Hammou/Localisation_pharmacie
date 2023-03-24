@@ -25,5 +25,6 @@ public class Zone {
     private List<Pharmacie> pharmacieList;
     //@JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Ville ville;
 }
