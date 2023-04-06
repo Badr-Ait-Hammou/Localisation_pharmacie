@@ -12,6 +12,11 @@ import java.util.List;
 @RequestMapping("api/zones")
 public class ZoneController {
 
+    @GetMapping("/")
+    public List<Zone> findAll() {
+        return zoneService.findAll();
+    }
+
     @Autowired
     private ZoneService zoneService;
     @PutMapping("/id/{id}")

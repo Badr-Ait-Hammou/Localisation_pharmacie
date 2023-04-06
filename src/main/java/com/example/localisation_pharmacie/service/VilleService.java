@@ -31,6 +31,17 @@ public class VilleService implements IDao<Ville> {
         return villeRepository.findById(id);
     }
 
+    @Override
+    public void delete(Ville o) {
+
+    }
+
+
+    public void deleteVille(Integer id) {
+        Ville ville = villeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ville not found with id " + id));
+        villeRepository.delete(ville);
+    }
+
 
     public void update(Integer id,Ville villeinfo) {
         Ville ville=villeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ville not found with id " + id));
@@ -39,8 +50,5 @@ public class VilleService implements IDao<Ville> {
         villeRepository.save(ville);
     }
 
-    @Override
-    public void delete(Ville o) {
-        villeRepository.delete(o);
-    }
+
 }

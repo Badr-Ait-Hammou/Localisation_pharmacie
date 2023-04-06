@@ -8,4 +8,6 @@ public interface IDao <T>{
     T findById(int id);
    // void update(T o);
     void delete(T o);
+
+
 }

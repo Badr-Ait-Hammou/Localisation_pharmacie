@@ -10,7 +10,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/villes")
+@CrossOrigin
+
 public class VilleController {
+
+    @DeleteMapping("/{id}")
+    public void deleteVille(@PathVariable Integer id) {
+        villeService.deleteVille(id);
+    }
 
     @Autowired
     private VilleService villeService;
@@ -34,10 +41,7 @@ public class VilleController {
         villeService.update(id, villeinfo);
     }
 
-    @DeleteMapping("/")
-    public void delete(@PathVariable Ville ville) {
-        villeService.delete(ville);
-    }
+
 
 
 

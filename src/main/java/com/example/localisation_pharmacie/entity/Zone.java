@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 import java.util.List;
@@ -25,6 +26,6 @@ public class Zone {
     private List<Pharmacie> pharmacieList;
     //@JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    //@JsonIgnore
     private Ville ville;
 }
