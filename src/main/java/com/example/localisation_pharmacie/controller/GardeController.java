@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/gardes")
+@CrossOrigin
 public class GardeController {
 
 
@@ -36,7 +37,7 @@ public class GardeController {
     public void update(@PathVariable Integer id,@RequestBody Garde gardeinfo) {
         gardeService.update(id, gardeinfo);
     }
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         Garde garde=gardeService.findById(id);
         gardeService.delete(garde);
