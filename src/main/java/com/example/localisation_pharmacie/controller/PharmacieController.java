@@ -14,6 +14,10 @@ import java.util.List;
 public class PharmacieController {
 
 
+    @GetMapping("/{id}/depart/{depart}")
+    public String getItineraire(@PathVariable int id,@PathVariable String depart) throws Exception {
+        return pharmacieService.getItineraire(id, depart);
+    }
 
     @Autowired
     private PharmacieService pharmacieService;

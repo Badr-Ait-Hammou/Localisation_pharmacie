@@ -19,8 +19,8 @@ public class Pharmacie {
 
     private int id;
     private String nom;
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
     private String adresse;
     @Column(nullable = true, length = 64)
     private String photos;

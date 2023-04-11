@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PharmacieService implements IDao<Pharmacie> {
@@ -59,6 +61,17 @@ public class PharmacieService implements IDao<Pharmacie> {
         pharmacie.setLongitude(pharmacieinfo.getLongitude());
         pharmacie.setUser(pharmacieinfo.getUser());
         pharmacieRepository.save(pharmacie);
+    }
+
+    public String getItineraire(int id, String depart) throws Exception {
+        String apikey="";
+        Optional<Pharmacie> optionalPharmacie = Optional.ofNullable(pharmacieRepository.findById(id));
+        Pharmacie pharmacie = optionalPharmacie.orElseThrow(() -> new Exception(" !!!"));
+        String destination = pharmacie.getLatitude() + "," + pharmacie.getLongitude();
+        String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + depart + "&destination=" + destination + "&key="+apikey;
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForObject(url, String.class);
+        return response;
     }
 
     @Override
