@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/gardepharmacie")
+@RequestMapping("/api/gardepharmacies")
+@CrossOrigin
 public class GardePharmacieController {
 
     @Autowired

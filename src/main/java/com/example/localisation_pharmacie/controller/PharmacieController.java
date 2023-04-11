@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/pharmacie")
+@RequestMapping("api/pharmacies")
+@CrossOrigin
 public class PharmacieController {
 
 
@@ -38,8 +39,8 @@ public class PharmacieController {
     }
 
     @PostMapping("/save")
-    public Pharmacie save(@RequestBody Pharmacie o) {
-        return pharmacieService.save(o);
+    public Pharmacie save(@RequestBody Pharmacie pharmacie) {
+        return pharmacieService.save(pharmacie);
     }
 
     @GetMapping("/")
@@ -58,8 +59,8 @@ public class PharmacieController {
     }
 
     @DeleteMapping("/")
-    public void delete(@PathVariable Pharmacie o) {
-        pharmacieService.delete(o);
+    public void delete(@PathVariable Pharmacie pharmacie) {
+        pharmacieService.delete(pharmacie);
     }
 
 
