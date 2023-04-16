@@ -2,6 +2,7 @@ package com.example.localisation_pharmacie.service;
 
 import com.example.localisation_pharmacie.dao.IDao;
 import com.example.localisation_pharmacie.entity.User;
+import com.example.localisation_pharmacie.entity.Ville;
 import com.example.localisation_pharmacie.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -30,6 +31,11 @@ public class UserService implements IDao<User> {
         return userRepository.findById(id);
     }
 
+    @Override
+    public void delete(User o) {
+
+    }
+
 
     public void update(Integer id,User userinfo) {
         User user=userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("user not found with id " + id));
@@ -41,8 +47,9 @@ public class UserService implements IDao<User> {
         userRepository.save(user);
     }
 
-    @Override
-    public void delete(User o) {
-        userRepository.delete(o);
+
+    public void deleteUser(Integer id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("user not found with id " + id));
+        userRepository.delete(user);
     }
 }

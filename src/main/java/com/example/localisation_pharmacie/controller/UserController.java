@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("api/users")
+@CrossOrigin
 public class UserController {
+
+
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/save")
-    public User save(@RequestBody User user) {
-        return userService.save(user);
+    public void save(@RequestBody User user) {
+        userService.save(user);
     }
 
     @GetMapping("/")
@@ -30,11 +33,11 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/")
-    public void delete(@PathVariable User user) {
-        userService.delete(user);
-    }
 
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+    }
     @PutMapping("/update/{id}")
     public void update(@PathVariable Integer id,@RequestBody User userinfo) {
         userService.update(id, userinfo);
