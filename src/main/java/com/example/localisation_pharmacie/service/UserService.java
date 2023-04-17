@@ -42,7 +42,7 @@ public class UserService implements IDao<User> {
         user.setEmail(userinfo.getEmail());
         user.setNom(userinfo.getNom());
         user.setPrenom(userinfo.getPrenom());
-        user.setPharmacie(userinfo.getPharmacie());
+       // user.setPharmacieList(userinfo.getPharmacieList());
         user.setPassword(userinfo.getPassword());
         userRepository.save(user);
     }

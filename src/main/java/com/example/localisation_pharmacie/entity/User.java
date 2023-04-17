@@ -27,7 +27,8 @@ public class User {
     private List<Role> roleList;
 
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
-    private Pharmacie pharmacie;
+   // @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany
+    private List<Pharmacie> pharmacieList;
 
 }

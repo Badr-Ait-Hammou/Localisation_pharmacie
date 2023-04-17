@@ -31,12 +31,12 @@ public class VilleController {
         return villeService.findAll();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public Ville findById(@PathVariable int id) {
         return villeService.findById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void update(@PathVariable Integer id,@RequestBody Ville villeinfo) {
         villeService.update(id, villeinfo);
     }

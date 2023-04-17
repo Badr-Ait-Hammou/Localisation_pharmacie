@@ -30,12 +30,12 @@ public class GardePharmacieController {
         return gardPharmacieService.findById(id);
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/{id}")
     public void update(@PathVariable Integer id,@RequestBody GardePharmacie gardePharmacieinfo) {
         gardPharmacieService.update(id, gardePharmacieinfo);
     }
 
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         GardePharmacie gardePharmacie=gardPharmacieService.findById(id);
         gardPharmacieService.delete(gardePharmacie);

@@ -27,13 +27,13 @@ public class GardeController {
         return gardeService.findAll();
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public Garde findById(@PathVariable int id) {
         return gardeService.findById(id);
     }
 
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void update(@PathVariable Integer id,@RequestBody Garde gardeinfo) {
         gardeService.update(id, gardeinfo);
     }

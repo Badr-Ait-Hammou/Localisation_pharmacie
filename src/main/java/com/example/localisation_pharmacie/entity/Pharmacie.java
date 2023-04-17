@@ -1,5 +1,6 @@
 package com.example.localisation_pharmacie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,16 +28,17 @@ public class Pharmacie {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonIgnoreProperties("ville")
     private Zone zone;
 
     @OneToMany(mappedBy = "pharmacie")
     @JsonIgnore
      private List<GardePharmacie> garde_pharmacieList;
 
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name = "user")
-    @JsonIgnore
+   // @OneToOne(fetch=FetchType.EAGER)
+   // @JoinColumn(name = "user")
+   // @JsonIgnore
+    @ManyToOne
     private User user;
 
 

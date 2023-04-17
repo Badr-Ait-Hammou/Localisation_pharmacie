@@ -59,6 +59,7 @@ public class PharmacieService implements IDao<Pharmacie> {
         pharmacie.setZone(pharmacieinfo.getZone());
         pharmacie.setLatitude(pharmacieinfo.getLatitude());
         pharmacie.setLongitude(pharmacieinfo.getLongitude());
+        pharmacie.setPhotos(pharmacieinfo.getPhotos());
         pharmacie.setUser(pharmacieinfo.getUser());
         pharmacieRepository.save(pharmacie);
     }

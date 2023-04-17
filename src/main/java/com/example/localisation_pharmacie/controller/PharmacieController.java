@@ -57,20 +57,17 @@ public class PharmacieController {
         return pharmacieService.findById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public void update(@PathVariable Integer id,@RequestBody Pharmacie pharmacieinfo) {
         pharmacieService.update(id, pharmacieinfo);
     }
 
-    @DeleteMapping("/")
-    public void delete(@PathVariable Pharmacie pharmacie) {
-        pharmacieService.delete(pharmacie);
-    }
 
 
 
 
-    @DeleteMapping("/delete")
+
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable int id) {
         Pharmacie pharmacie=pharmacieService.findById(id);
         pharmacieService.delete(pharmacie);
