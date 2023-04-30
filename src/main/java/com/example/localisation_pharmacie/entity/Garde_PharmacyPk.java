@@ -18,7 +18,4 @@ private int pharmacie;
 private int garde;
 @Temporal(TemporalType.DATE)
 private Date dateDebut;
-
-
-
 }
