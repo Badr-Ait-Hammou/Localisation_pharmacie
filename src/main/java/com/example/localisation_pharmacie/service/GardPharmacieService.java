@@ -77,4 +77,47 @@ public class GardPharmacieService implements IDao<GardePharmacie> {
             this.gardePharmacieRepository.delete(gardePharmacie);
         }
     }
+
+   /* public void updategardepharmacie(Date datedebut, int idpharmacie, int idgarde,GardePharmacie gardepharmacieinfo){
+        GardePharmacie gardePharmacie = this.findByDateDebut(datedebut, idpharmacie, idgarde);
+        gardePharmacie.setGarde(gardepharmacieinfo.getGarde());
+        gardePharmacie.setPharmacie(gardepharmacieinfo.getPharmacie());
+        gardePharmacie.setDate_fin(gardepharmacieinfo.getDate_fin());
+        gardePharmacie.getGarde_pharmacyEMb().setDateDebut(gardepharmacieinfo.getGarde_pharmacyEMb().getDateDebut());
+        gardePharmacieRepository.save(gardePharmacie);
+    }
+*/
+
+    public GardePharmacie updateGardePharmacie(Date datedebut ,int idpharmacie , int idgarde , GardePharmacie gardePharmacieinfo ) {
+        GardePharmacie gardePharmacie = this.findByDateDebut(datedebut, idpharmacie ,idgarde);
+        if(gardePharmacie != null) {
+            gardePharmacieRepository.delete(gardePharmacie);
+
+            gardePharmacie.setGarde_pharmacyEMb(gardePharmacieinfo.getGarde_pharmacyEMb());
+            gardePharmacie.setDate_fin(gardePharmacieinfo.getDate_fin());
+
+            return gardePharmacieRepository.save(gardePharmacie);
+        }
+        return  null;
+    }
+
+/*
+    public void updateGardePharmacie(Date datedebut, int idpharmacie, int idgarde, GardePharmacie gardePharmacieInfo) {
+        GardePharmacie gardePharmacie = this.findByDateDebut(datedebut, idpharmacie, idgarde);
+
+        if (gardePharmacie != null) {
+            // Update the entity's fields
+
+            Garde_PharmacyPk gardePharmacyEMb = gardePharmacie.getGarde_pharmacyEMb();
+            gardePharmacyEMb.setDateDebut(gardePharmacieInfo.getGarde_pharmacyEMb().getDateDebut());
+            gardePharmacyEMb.setPharmacie(gardePharmacieInfo.getGarde_pharmacyEMb().getPharmacie());
+            gardePharmacyEMb.setGarde(gardePharmacieInfo.getGarde_pharmacyEMb().getGarde());
+
+            // Save the updated entity back to the database
+            gardePharmacieRepository.delete(gardePharmacie);
+            gardePharmacieRepository.save(gardePharmacie);
+        }
+    }
+
+ */
 }

@@ -24,10 +24,17 @@ public class GardePharmacieController {
     public void deleteByDateDebut(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date datedebut,@PathVariable int idpharmacie,@PathVariable int idgarde) {
         gardPharmacieService.deleteByDateDebut(datedebut, idpharmacie, idgarde);
     }
+/*
+    @PutMapping("/{datedebut}/idpharmacie/{idpharmacie}/idgarde/{idgarde}")
+    public void updategardepharmacie(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date datedebut,@PathVariable int idpharmacie,@PathVariable int idgarde,@RequestBody GardePharmacie gardepharmacieinfo) {
+        gardPharmacieService.updategardepharmacie(datedebut, idpharmacie, idgarde, gardepharmacieinfo);
+    }
+*/
 
-
-
-
+    @PutMapping("/{datedebut}/idpharmacie/{idpharmacie}/idgarde/{idgarde}")
+    public GardePharmacie updateg(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date datedebut,@PathVariable int idpharmacie,@PathVariable int idgarde,@RequestBody GardePharmacie gardePharmacieinfo) {
+        return gardPharmacieService.updateGardePharmacie(datedebut, idpharmacie, idgarde, gardePharmacieinfo);
+    }
 
     @Autowired
     private GardPharmacieService gardPharmacieService;

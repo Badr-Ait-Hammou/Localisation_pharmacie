@@ -35,7 +35,6 @@ public class PharmacieService implements IDao<Pharmacie> {
     }
 
 
-
     @Override
     public Pharmacie save(Pharmacie o) {
         return pharmacieRepository.save(o);
