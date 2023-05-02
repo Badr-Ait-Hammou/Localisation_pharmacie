@@ -23,7 +23,7 @@ public class Pharmacie {
     private double longitude;
     private double latitude;
     private String adresse;
-    @Column(nullable = true, length = 64)
+    @Column(length =5000000)
     private String photos;
 
 
