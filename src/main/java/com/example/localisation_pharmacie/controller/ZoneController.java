@@ -18,6 +18,11 @@ public class ZoneController {
         return zoneService.findAll();
     }
 
+    @GetMapping("/{nom}")
+    public List<Zone> findZoneByVille(@PathVariable String nom) {
+        return zoneService.findZoneByVille(nom);
+    }
+
     @Autowired
     private ZoneService zoneService;
     @PutMapping("/id/{id}")

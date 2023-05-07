@@ -4,6 +4,7 @@ import com.example.localisation_pharmacie.dao.IDao;
 import com.example.localisation_pharmacie.entity.Zone;
 import com.example.localisation_pharmacie.repository.ZoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +14,15 @@ import java.util.List;
 @Service
 public class ZoneService implements IDao<Zone> {
 
+
+
     @Autowired
     private ZoneRepository zoneRepository;
 
+
+    public List<Zone> findZoneByVille(String nom) {
+        return zoneRepository.findZoneByVille(nom);
+    }
 
     @Override
     public Zone save(Zone o) {
