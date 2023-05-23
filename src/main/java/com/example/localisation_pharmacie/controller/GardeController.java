@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/gardes")
+@RequestMapping("api/controller/gardes")
 @CrossOrigin
 public class GardeController {
 

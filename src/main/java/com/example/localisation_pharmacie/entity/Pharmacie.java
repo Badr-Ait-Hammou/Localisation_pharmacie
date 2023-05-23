@@ -38,8 +38,8 @@ public class Pharmacie {
    // @OneToOne(fetch=FetchType.EAGER)
    // @JoinColumn(name = "user")
    // @JsonIgnore
-    @ManyToOne
+   /* @ManyToOne
     private User user;
-
+*/
 
 }

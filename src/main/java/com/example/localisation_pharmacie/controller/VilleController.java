@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/villes")
+@RequestMapping("api/controller/villes")
 @CrossOrigin
 
 public class VilleController {

@@ -6,16 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping("api/controller/users")
 @CrossOrigin
 public class UserController {
 
-
-
     @Autowired
     private UserService userService;
+
+
+    @GetMapping("/email/{email}")
+    public Optional<User> findByEmail(@PathVariable String email) {
+        return userService.findByEmail(email);
+    }
 
     @PostMapping("/save")
     public void save(@RequestBody User user) {

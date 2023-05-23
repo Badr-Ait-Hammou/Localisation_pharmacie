@@ -59,12 +59,12 @@ public class PharmacieService implements IDao<Pharmacie> {
         pharmacie.setLatitude(pharmacieinfo.getLatitude());
         pharmacie.setLongitude(pharmacieinfo.getLongitude());
         pharmacie.setPhotos(pharmacieinfo.getPhotos());
-        pharmacie.setUser(pharmacieinfo.getUser());
+       // pharmacie.setUser(pharmacieinfo.getUser());
         pharmacieRepository.save(pharmacie);
     }
 
     public String getItineraire(int id, String depart) throws Exception {
-        String apikey="";
+        String apikey="AIzaSyDzmu1dHaje4yWHlQkP4cGC6lwWBRuwaUA";
         Optional<Pharmacie> optionalPharmacie = Optional.ofNullable(pharmacieRepository.findById(id));
         Pharmacie pharmacie = optionalPharmacie.orElseThrow(() -> new Exception(" !!!"));
         String destination = pharmacie.getLatitude() + "," + pharmacie.getLongitude();

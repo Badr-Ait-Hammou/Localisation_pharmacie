@@ -9,9 +9,14 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IDao<User> {
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
     @Autowired
     private UserRepository userRepository;
@@ -40,8 +45,8 @@ public class UserService implements IDao<User> {
     public void update(Integer id,User userinfo) {
         User user=userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("user not found with id " + id));
         user.setEmail(userinfo.getEmail());
-        user.setNom(userinfo.getNom());
-        user.setPrenom(userinfo.getPrenom());
+      //  user.setNom(userinfo.getNom());
+       // user.setPrenom(userinfo.getPrenom());
        // user.setPharmacieList(userinfo.getPharmacieList());
         user.setPassword(userinfo.getPassword());
         userRepository.save(user);
