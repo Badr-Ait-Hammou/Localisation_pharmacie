@@ -26,12 +26,12 @@ public class PharmacieController {
         return pharmacieService.findByZoneId(id);
     }
 
-    @GetMapping("/ville/{ville}/zone/{zone}")
+    @GetMapping("/{ville}/{zone}")
     public List<Pharmacie> findPharmaciyByVilleAndZone(@PathVariable String ville,@PathVariable String zone) {
         return pharmacieService.findPharmaciyByVilleAndZone(ville, zone);
     }
 
-    @GetMapping("/ville/{ville}/zone/{zone}/period/{period}")
+    @GetMapping("/{ville}/{zone}/{period}")
     public List<Pharmacie> findPharmacyAvailableZonePer(@PathVariable String ville,@PathVariable String zone,@PathVariable String period) {
         return pharmacieService.findPharmacyAvailableZonePer(ville, zone, period);
     }
