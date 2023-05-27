@@ -13,8 +13,6 @@ import java.util.List;
 @CrossOrigin
 public class GardeController {
 
-
-
     @Autowired
     private GardeService gardeService;
     @PostMapping("/save")
@@ -42,6 +40,5 @@ public class GardeController {
         Garde garde=gardeService.findById(id);
         gardeService.delete(garde);
     }
-
 
 }
